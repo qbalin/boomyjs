@@ -6,7 +6,7 @@ import { Bodies, Body } from "matter-js";
 import { CELL_WIDTH, MAZE_X_OFFSET, MAZE_Y_OFFSET } from "./constants";
 
 const MIN_MOVE_SPEED = 1;
-const MAX_MOVE_SPEED = 5;
+const MAX_MOVE_SPEED = 10;
 const MIN_INTENSITY = 0;
 const MAX_INTENSITY = 1;
 

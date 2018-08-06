@@ -4,8 +4,7 @@ import createBoomy from "./boomy";
 import createMaze from "./maze"; 
 import SoundWavesEmitter from "./soundWavesEmitter";
 import setupEvents from './events';
-
-
+import goal from './goal';
 
 // create an engine
 var engine = Engine.create({ positionIterations: 50});
@@ -27,7 +26,7 @@ const boomy = createBoomy(engine.world);
 
 const walls = createMaze(engine.world);
 
-const goal = require('./goal');
+
 const endParticleEmitter = new SoundWavesEmitter(goal, 50, engine.world);
 setupEvents(engine, endParticleEmitter);
 

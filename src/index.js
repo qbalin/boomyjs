@@ -8,7 +8,7 @@ import setupEvents from './events';
 
 
 // create an engine
-var engine = Engine.create();
+var engine = Engine.create({ positionIterations: 50});
 
 // create a renderer
 var render = Render.create({

@@ -15,7 +15,10 @@ const createBoomy = world => {
 		MAZE_X_OFFSET + CELL_WIDTH / 2,
 		MAZE_Y_OFFSET + CELL_WIDTH / 2,
 		15,
-		{ label: "boomy" }
+		{
+			label: "boomy",
+			frictionAir: 0.3,
+		}
 	);
 
 	var volumeIntensity = 0.5;
@@ -43,19 +46,19 @@ const createBoomy = world => {
 	};
 
 	keyboard.on("keydown", "ArrowRight", function() {
-		Body.translate(boomy, { x: boomySpeed, y: 0 });
+		Body.setVelocity(boomy, { x: boomySpeed, y: 0 });
 	});
 
 	keyboard.on("keydown", "ArrowLeft", function() {
-		Body.translate(boomy, { x: -boomySpeed, y: 0 });
+		Body.setVelocity(boomy, { x: -boomySpeed, y: 0 });
 	});
 
 	keyboard.on("keydown", "ArrowUp", function() {
-		Body.translate(boomy, { x: 0, y: -boomySpeed });
+		Body.setVelocity(boomy, { x: 0, y: -boomySpeed });
 	});
 
 	keyboard.on("keydown", "ArrowDown", function() {
-		Body.translate(boomy, { x: 0, y: boomySpeed });
+		Body.setVelocity(boomy, { x: 0, y: boomySpeed });
 	});
 
 	keyboard.on("keydown", "KeyS", function() {

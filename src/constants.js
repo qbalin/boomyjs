@@ -1,0 +1,8 @@
+module.exports = {
+	CELL_WIDTH: 50,
+    MAZE_X_OFFSET: 200,
+    MAZE_Y_OFFSET: 100,
+    RED_COLOR: "#C44D58",
+    HORIZONTAL_CELL_COUNT: 12,
+    VERTICAL_CELL_COUNT: 8,
+}

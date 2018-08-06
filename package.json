@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "generate-maze": "^0.2.0",
-    "matter-js": "^0.14.2"
+    "matter-js": "^0.14.2",
+    "p5": "^0.6.1"
   },
   "devDependencies": {
     "webpack": "^4.16.4",

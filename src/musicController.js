@@ -36,4 +36,4 @@ const Singleton = (() => {
 	}
 })();
 
-module.exports = Singleton.getInstance();
+export default Singleton.getInstance();

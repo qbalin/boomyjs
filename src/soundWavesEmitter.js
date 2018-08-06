@@ -1,10 +1,6 @@
-const Matter = require("matter-js");
-const keyboard = require("./keyboard");
-const clamp = require('./helpers').clamp
-
-const Bodies = Matter.Bodies,
-	Body = Matter.Body,
-	World = Matter.World;
+import { Bodies, Body, World } from "matter-js";
+import keyboard from "./keyboard";
+import { clamp } from './helpers';
 
 const MIN_PERIOD = 50;
 const MAX_PERIOD = 1500;
@@ -70,4 +66,4 @@ class Emitter {
 	}
 }
 
-module.exports = Emitter;
+export default Emitter;

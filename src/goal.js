@@ -1,11 +1,5 @@
-const Bodies = require("matter-js").Bodies;
-const Constants = require("./constants");
-
-const CELL_WIDTH = Constants.CELL_WIDTH,
-	MAZE_X_OFFSET = Constants.MAZE_X_OFFSET,
-	MAZE_Y_OFFSET = Constants.MAZE_Y_OFFSET,
-	HORIZONTAL_CELL_COUNT = Constants.HORIZONTAL_CELL_COUNT,
-	VERTICAL_CELL_COUNT = Constants.VERTICAL_CELL_COUNT;
+import { Bodies } from "matter-js";
+import { CELL_WIDTH, MAZE_X_OFFSET, MAZE_Y_OFFSET, HORIZONTAL_CELL_COUNT, VERTICAL_CELL_COUNT } from "./constants";
 
 const goal = Bodies.circle(
 	MAZE_X_OFFSET + (HORIZONTAL_CELL_COUNT - 1 / 2) * CELL_WIDTH,
@@ -43,4 +37,4 @@ setInterval(() => {
 	goal.render.strokeStyle = `#FF${color}00`
 }, 25)
 
-module.exports = goal;
+export default goal;

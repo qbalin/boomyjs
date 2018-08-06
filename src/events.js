@@ -1,10 +1,7 @@
-const Matter = require("matter-js");
-const Events = Matter.Events;
+import { Events } from "matter-js";
+import { RED_COLOR } from "./constants";
 
-const Constants = require("./constants");
-const RED_COLOR = Constants.RED_COLOR;
-
-module.exports = (engine, endParticleEmitter) => {
+const setupEvents = (engine, endParticleEmitter) => {
 	Events.on(engine, "collisionStart", function(event) {
 		let pairs = event.pairs;
 
@@ -41,3 +38,5 @@ module.exports = (engine, endParticleEmitter) => {
 		}
 	});
 };
+
+export default setupEvents;

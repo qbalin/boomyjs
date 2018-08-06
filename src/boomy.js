@@ -1,23 +1,16 @@
-const Matter = require("matter-js");
-const keyboard = require("./keyboard");
-const SoundWavesEmitter = require("./soundWavesEmitter");
-const musicController = require("./musicController");
-const clamp = require("./helpers").clamp;
-
-const Bodies = Matter.Bodies,
-	Body = Matter.Body;
+import keyboard from "./keyboard";
+import SoundWavesEmitter from "./soundWavesEmitter";
+import musicController from "./musicController";
+import { clamp } from "./helpers";
+import { Bodies } from "matter-js";
+import { CELL_WIDTH, MAZE_X_OFFSET, MAZE_Y_OFFSET } from "./constants";
 
 const MIN_MOVE_SPEED = 1;
 const MAX_MOVE_SPEED = 5;
 const MIN_INTENSITY = 0;
 const MAX_INTENSITY = 1;
-const Constants = require("./constants");
 
-const CELL_WIDTH = Constants.CELL_WIDTH,
-	MAZE_X_OFFSET = Constants.MAZE_X_OFFSET,
-	MAZE_Y_OFFSET = Constants.MAZE_Y_OFFSET;
-
-module.exports = world => {
+const createBoomy = world => {
 	var boomy = Bodies.circle(
 		MAZE_X_OFFSET + CELL_WIDTH / 2,
 		MAZE_Y_OFFSET + CELL_WIDTH / 2,
@@ -32,7 +25,7 @@ module.exports = world => {
 	const emitter = new SoundWavesEmitter(boomy, 50, world);
 	emitter.start();
 
-	setBoomySpeed = intensity => {
+	const setBoomySpeed = intensity => {
 		boomySpeed =
 			MIN_MOVE_SPEED + intensity * (MIN_MOVE_SPEED + MAX_MOVE_SPEED);
 		console.log("boomySpeed", boomySpeed);
@@ -103,3 +96,5 @@ module.exports = world => {
 
 	return boomy;
 };
+
+export default createBoomy;

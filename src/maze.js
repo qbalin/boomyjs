@@ -1,15 +1,8 @@
-const Matter = require("matter-js");
-// module aliases
-const Bodies = Matter.Bodies;
+import { Bodies } from "matter-js";
+import { CELL_WIDTH, MAZE_Y_OFFSET, MAZE_X_OFFSET, HORIZONTAL_CELL_COUNT, VERTICAL_CELL_COUNT } from "./constants";
+import createMaze from "generate-maze";
 
-const Constants = require("./constants");
-const CELL_WIDTH = Constants.CELL_WIDTH,
-	MAZE_Y_OFFSET = Constants.MAZE_Y_OFFSET,
-	MAZE_X_OFFSET = Constants.MAZE_X_OFFSET,
-	HORIZONTAL_CELL_COUNT = Constants.HORIZONTAL_CELL_COUNT,
-	VERTICAL_CELL_COUNT = Constants.VERTICAL_CELL_COUNT;
 
-const createMaze = require("generate-maze");
 const maze = createMaze(HORIZONTAL_CELL_COUNT, VERTICAL_CELL_COUNT);
 console.log(maze);
 
@@ -18,7 +11,7 @@ const WALL_SECTIONS_AMOUNT = 1;
 const WALL_SECTIONS_LENGTH = (CELL_WIDTH + WALL_WIDTH) / WALL_SECTIONS_AMOUNT;
 
 
-module.exports = () => {
+const generateMaze = () => {
 	const walls = [];
 
 	maze.forEach(line =>
@@ -95,3 +88,5 @@ module.exports = () => {
 
 	return walls;
 };
+
+export default generateMaze;

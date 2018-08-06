@@ -26,4 +26,4 @@ class Keyboard {
 
 const keyboard = new Keyboard();
 
-module.exports = keyboard;
+export default keyboard;

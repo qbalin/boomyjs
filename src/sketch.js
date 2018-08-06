@@ -1,4 +1,4 @@
-const musicController = require('./musicController');
+import musicController from './musicController';
 
 var song;
 
@@ -25,5 +25,6 @@ var s = function(p) {
   };
 
 };
+
 
 var myp5 = new p5(s, "c1");

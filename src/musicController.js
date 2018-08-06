@@ -17,6 +17,14 @@ class MusicController {
 	}
 
 	setVolume(intensity) {
+		// Make the increase in intensity less steep
+		// e (ax - c) + b
+		const c = 2;
+		const b = - Math.exp(-c);
+		const a = c + Math.log(1 + Math.exp(-c));
+		intensity = Math.exp(a * intensity - c) + b;
+
+		// intensity = 2 ** intensity - 1;
 	    const newVolume = MIN_VOLUME + intensity * (MAX_VOLUME - MIN_VOLUME);
 		this.volume = Math.min(Math.max(newVolume, MIN_VOLUME), MAX_VOLUME);	
 		console.log('VOLUME', this.volume)

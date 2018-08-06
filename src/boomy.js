@@ -2,7 +2,7 @@ import keyboard from "./keyboard";
 import SoundWavesEmitter from "./soundWavesEmitter";
 import musicController from "./musicController";
 import { clamp } from "./helpers";
-import { Bodies } from "matter-js";
+import { Bodies, Body } from "matter-js";
 import { CELL_WIDTH, MAZE_X_OFFSET, MAZE_Y_OFFSET } from "./constants";
 
 const MIN_MOVE_SPEED = 1;

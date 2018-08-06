@@ -1,17 +1,31 @@
 import { Bodies } from "matter-js";
 import { CELL_WIDTH, MAZE_Y_OFFSET, MAZE_X_OFFSET, HORIZONTAL_CELL_COUNT, VERTICAL_CELL_COUNT } from "./constants";
-import createMaze from "generate-maze";
+import generateMaze from "generate-maze";
 
+//Remove redundant walls:
+// _  _
+//|_||_|             _ _
+// _  _      -->    |_|_|
+//|_||_|            |_|_|
+const simplifyMaze = maze =>
+	maze.map(row => row.map( cell => {
+		const simplifiedCell = Object.assign({}, cell);
+		simplifiedCell.left = simplifiedCell.x === 0 && simplifiedCell.left;
+		simplifiedCell.top = simplifiedCell.y === 0 && simplifiedCell.top;
+		return simplifiedCell;
+	}))
 
-const maze = createMaze(HORIZONTAL_CELL_COUNT, VERTICAL_CELL_COUNT);
+const maze = simplifyMaze(generateMaze(12, 8));
+
 console.log(maze);
+
 
 const WALL_WIDTH = 5;
 const WALL_SECTIONS_AMOUNT = 1;
 const WALL_SECTIONS_LENGTH = (CELL_WIDTH + WALL_WIDTH) / WALL_SECTIONS_AMOUNT;
 
 
-const generateMaze = () => {
+const createMaze = () => {
 	const walls = [];
 
 	maze.forEach(line =>
@@ -89,4 +103,4 @@ const generateMaze = () => {
 	return walls;
 };
 
-export default generateMaze;
+export default createMaze;

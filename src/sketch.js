@@ -2,12 +2,12 @@ import musicController from './musicController';
 import p5 from 'p5';
 import p5Sound from 'p5/lib/addons/p5.sound';
 
-var song;
+let song;
 
 
-var s = function(p) {
+const s = (p) => {
   p.preload = () => {
-    song = p.loadSound("./musicFiles/Day299.mp3");
+    song = p.loadSound('./musicFiles/Day299.mp3');
   };
 
   p.setup = () => {
@@ -25,8 +25,7 @@ var s = function(p) {
 
     song.rate(musicController.speed);
   };
-
 };
 
 
-var myp5 = new p5(s, "c1");
+new p5(s, 'c1');

@@ -1,42 +1,37 @@
-import { Events } from "matter-js";
-import { RED_COLOR } from "./constants";
+import { Events } from 'matter-js';
+import { RED_COLOR } from './constants';
 
 const setupEvents = (engine, endParticleEmitter) => {
-	Events.on(engine, "collisionStart", function(event) {
-		let pairs = event.pairs;
+  Events.on(engine, 'collisionStart', (event) => {
+    const { pairs } = event;
 
-		for (let i = 0, j = pairs.length; i != j; ++i) {
-			let pair = pairs[i];
+    for (let i = 0, j = pairs.length; i !== j; i += 1) {
+      const pair = pairs[i];
 
-			if (
-				(pair.bodyA.label === "wall" &&
-					pair.bodyB.label === "soundParticle") ||
-				(pair.bodyB.label === "wall" &&
-					pair.bodyA.label === "soundParticle")
-			) {
-				let wall =
-					pair.bodyA.label === "wall" ? pair.bodyA : pair.bodyB;
-				let soundParticle =
-					pair.bodyA.label === "soundParticle"
-						? pair.bodyA
-						: pair.bodyB;
+      if (
+        (pair.bodyA.label === 'wall'
+        && pair.bodyB.label === 'soundParticle')
+      || (pair.bodyB.label === 'wall'
+        && pair.bodyA.label === 'soundParticle')
+      ) {
+        const wall = pair.bodyA.label === 'wall' ? pair.bodyA : pair.bodyB;
 
-				if (wall.render.strokeStyle !== RED_COLOR) {
-					wall.render.strokeStyle = RED_COLOR;
-					let handler = setTimeout(() => {
-						wall.render.strokeStyle = "transparent";
-					}, 500);
-				}
-			}
+        if (wall.render.strokeStyle !== RED_COLOR) {
+          wall.render.strokeStyle = RED_COLOR;
+          setTimeout(() => {
+            wall.render.strokeStyle = 'transparent';
+          }, 500);
+        }
+      }
 
-			if (
-				(pair.bodyA.label === "boomy" && pair.bodyB.label === "goal") ||
-				(pair.bodyB.label === "boomy" && pair.bodyA.label === "goal")
-			) {
-				endParticleEmitter.start();
-			}
-		}
-	});
+      if (
+        (pair.bodyA.label === 'boomy' && pair.bodyB.label === 'goal')
+        || (pair.bodyB.label === 'boomy' && pair.bodyA.label === 'goal')
+      ) {
+        endParticleEmitter.start();
+      }
+    }
+  });
 };
 
 export default setupEvents;

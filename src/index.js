@@ -1,7 +1,7 @@
 import {
   Engine, Render, World,
 } from 'matter-js';
-import createBoomy from './boomy';
+import Boomy from './boomy';
 import createMaze from './maze';
 import SoundWavesEmitter from './soundWavesEmitter';
 import setupEvents from './events';
@@ -22,19 +22,22 @@ const render = Render.create({
   },
 });
 
-const boomy = createBoomy(engine.world);
+const emitter = new SoundWavesEmitter(engine.world);
+const boomy = new Boomy(emitter);
+emitter.initialize(boomy.body, 50);
 
 
 const walls = createMaze(engine.world);
 
 
-const endParticleEmitter = new SoundWavesEmitter(goal, 50, engine.world);
+const endParticleEmitter = new SoundWavesEmitter(engine.world);
+endParticleEmitter.initialize(goal, 50);
 setupEvents(engine, endParticleEmitter);
 
 
 // add all of the bodies to the world
 engine.world.gravity.y = 0;
-World.add(engine.world, [boomy, ...walls, goal]);
+World.add(engine.world, [boomy.body, ...walls, goal]);
 
 // run the engine
 Engine.run(engine);

@@ -8,16 +8,18 @@ const MIN_LIFESPAN = 100;
 const MAX_LIFESPAN = 2000;
 
 class Emitter {
-  constructor(source, particleAmount, world) {
-    this.source = source;
-    this.particleAmount = particleAmount;
+  constructor(world) {
     this.world = world;
-    this.period = 1000; // ms
+    this.period = 1000;
     this.lifespan = 200;
   }
 
-  start() {
-    this.timerHandler = setTimeout(() => {
+
+  start(source, particleAmount) {
+    this.source = source;
+    this.particleAmount = particleAmount;
+
+    setTimeout(() => {
       console.log(this.period);
       const deltaTheta = (2 * Math.PI) / this.particleAmount;
       const velocity = 5;
@@ -46,6 +48,11 @@ class Emitter {
 
       this.start();
     }, this.period);
+  }
+
+  initialize(body, particleAmount) {
+    this.body = body;
+    this.particleAmount = particleAmount;
   }
 
   setPeriod(intensity) {

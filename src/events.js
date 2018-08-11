@@ -28,6 +28,7 @@ const setupEvents = (engine, endParticleEmitter) => {
         (pair.bodyA.label === 'boomy' && pair.bodyB.label === 'goal')
         || (pair.bodyB.label === 'boomy' && pair.bodyA.label === 'goal')
       ) {
+        const goal = pair.bodyA.label === 'goal' ? pair.bodyA : pair.bodyB;
         endParticleEmitter.start();
       }
     }

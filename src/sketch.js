@@ -1,6 +1,6 @@
-import musicController from './musicController';
 import p5 from 'p5';
 import p5Sound from 'p5/lib/addons/p5.sound';
+import musicController from './musicController';
 
 let song;
 

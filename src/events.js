@@ -20,7 +20,7 @@ const setupEvents = (engine, endParticleEmitter) => {
           wall.render.strokeStyle = RED_COLOR;
           setTimeout(() => {
             wall.render.strokeStyle = 'transparent';
-          }, 500);
+          }, 250);
         }
       }
 

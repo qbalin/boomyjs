@@ -7,6 +7,10 @@ class Keyboard {
   }
 
   onKeyDown(event) {
+    if (/Arrow/.test(event.code)) {
+      event.preventDefault();
+    }
+
     this.state[event.code] = true;
 
     if (this.listeners.keydown[event.code]) {
@@ -15,6 +19,10 @@ class Keyboard {
   }
 
   onKeyUp(event) {
+    if (/Arrow/.test(event.code)) {
+      event.preventDefault();
+    }
+
     this.state[event.code] = false;
 
     if (this.listeners.keyup[event.code]) {

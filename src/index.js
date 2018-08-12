@@ -7,6 +7,10 @@ import SoundWavesEmitter from './soundWavesEmitter';
 import setupEvents from './events';
 import goal from './goal';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+
+
 // create an engine
 const engine = Engine.create({ positionIterations: 50 });
 
